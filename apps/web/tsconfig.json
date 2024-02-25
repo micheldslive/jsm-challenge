@@ -1,5 +1,5 @@
 {
-  "extends": "@jsm/typescript-config/nextjs.json",
+  "extends": "@jsm/ts-config/nextjs.json",
   "compilerOptions": {
     "plugins": [
       {
