@@ -1,3 +1,3 @@
 {
-  "extends": "@jsm/typescript-config/base.json"
+  "extends": "@jsm/ts-config/base.json"
 }
