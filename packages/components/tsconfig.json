@@ -1,3 +1,9 @@
 {
-  "extends": "@jsm/ts-config/base.json"
+  "extends": ["@jsm/ts-config/components.json"],
+  "compilerOptions": {
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "vite.config.ts"]
 }

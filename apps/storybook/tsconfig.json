@@ -1,4 +1,0 @@
-{
-  "extends": ["@jsm/ts-config/storybook.json"],
-  "include": ["src", "vite.config.ts"]
-}
