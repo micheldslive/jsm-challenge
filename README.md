@@ -16,11 +16,11 @@ This Turborepo includes the following packages/apps:
 
 ### Apps and Packages
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@jsm/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@jsm/web`: a [Next.js](https://nextjs.org/) app
+- `@jsm/storybook`: another [Storybook](https://storybook.js.org/) app
+- `@jsm/components`: a stub React component library shared by both `web` and `storybook` applications
 - `@jsm/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@jsm/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@jsm/ts-config`: `tsconfig.json`s used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
