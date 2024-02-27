@@ -2,7 +2,6 @@
   "name": "@jsm/components",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "exports": {
     ".": "./src/index.ts"
   },
@@ -10,7 +9,8 @@
     "dev": "storybook dev -p 6006 --quiet",
     "build": "storybook build",
     "serve": "serve storybook-static",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "generate": "turbo gen react-component"
   },
   "dependencies": {
     "install": "^0.13.0",
@@ -37,6 +37,7 @@
     "@storybook/test": "^7.6.17",
     "@storybook/testing-library": "^0.2.2",
     "@storybook/theming": "^7.6.17",
+    "@turbo/gen": "^1.12.4",
     "@types/react": "^18.2.56",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^7.0.2",

@@ -1,8 +1,18 @@
-export const {{ pascalCase name }} = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div>
-      <h1>{{ pascalCase name }} Component</h1>
-      {children}
-    </div>
-  );
-};
+import { ComponentProps, forwardRef } from "react"
+import { tv } from "tailwind-variants"
+
+export interface {{ pascalCase name }}Props extends Omit<ComponentProps<"div">, "ref"> {}
+
+const variants = tv({
+  base: "p-5 border border-solid border-neutral-200 rounded-md overflow-hidden",
+})
+
+export const {{ pascalCase name }} = forwardRef<HTMLDivElement, {{ pascalCase name }}Props>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <div className={variants({ className })} ref={ref} {...props}>
+        {children}
+      </div>
+    )
+  },
+)
