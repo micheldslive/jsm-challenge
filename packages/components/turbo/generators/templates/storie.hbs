@@ -1,0 +1,18 @@
+import type { Meta, StoryObj } from "@storybook/react"
+import { {{ pascalCase name }}, {{ pascalCase name }}Props } from "./{{ pascalCase name }}"
+
+const meta = {
+  title: "Components/{{ pascalCase name }}",
+  component: {{ pascalCase name }},
+} satisfies Meta<{{ pascalCase name }}Props>
+
+export default meta
+type Story = StoryObj<typeof meta>
+
+export const Primary: Story = {}
+
+export const Secondary: Story = {}
+
+export const Large: Story = {}
+
+export const Small: Story = {}
