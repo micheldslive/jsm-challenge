@@ -38,16 +38,6 @@ const optionsTV = tv({
   },
 })
 
-const labelTV = tv({
-  base: "text-sm min-h-5",
-  variants: {
-    label: {
-      true: "",
-      false: "text-neutral-300",
-    },
-  },
-})
-
 export const Select = forwardRef<HTMLInputElement, SelectProps>(
   ({ title, options, ...props }, ref) => {
     const [open, setOpen] = useState<boolean>(false)
@@ -58,20 +48,27 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
       setOption((option) => ({ ...option, ...props }))
     }
 
-    console.log(Boolean(option.label))
-
     return (
       <>
-        <div className='relative text-lg w-48 z-50' title={title}>
+        <div
+          className='relative text-lg w-48 z-50'
+          title={title}
+          onClick={(event) => {
+            event.currentTarget.focus()
+          }}
+          onFocus={() => setOpen(true)}
+          onBlur={() => setOpen(false)}
+          tabIndex={0}
+        >
           <button
             className='flex items-center justify-between px-3 py-2 bg-white w-full rounded-lg'
-            onClick={() => setOpen((open) => !open)}
-            onBlur={() => setOpen(false)}
             title={title}
           >
             <input type='hidden' {...props} ref={mergeRefs([ref, inputRef])} />
-            <span className={labelTV({ label: Boolean(option.label) })}>
-              {option.label ?? props.placeholder}
+            <span className='text-sm min-h-5'>
+              {option.label ?? (
+                <span className='text-neutral-300'>{props.placeholder}</span>
+              )}
             </span>
             <Arrow className={optionTV({ open })} />
           </button>
@@ -80,18 +77,20 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
             {options?.map(({ label, value }, index) => {
               return (
                 <li
-                  key={index}
+                  key={(value ?? "option") + index}
                   className={optionTV({
                     active: value === option.value,
                     className:
                       "px-3 py-2 transition-colors duration-300 hover:bg-gray-100 text-sm cursor-pointer",
                   })}
-                  onClick={() =>
+                  onClick={(event) => {
+                    event.stopPropagation()
                     handleOption({
                       label,
                       value,
                     })
-                  }
+                    setOpen(false)
+                  }}
                 >
                   {label}
                 </li>
