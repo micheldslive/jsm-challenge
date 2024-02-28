@@ -40,7 +40,7 @@ export const Search = forwardRef<HTMLInputElement, SearchProps>(
       <div className={containerTV({ className, direction })}>
         <button
           type={buttonType}
-          className='flex items-center justify-center py-3 px-4'
+          className='flex items-center justify-center py-3 px-4 hover:scale-125 transition-transform active:scale-100'
           title={buttonTitle}
           ref={searchRef}
         >

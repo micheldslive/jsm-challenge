@@ -13,12 +13,13 @@ export const Primary: Story = {
   args: {
     placeholder: "Buscar aqui",
     buttonTitle: "Botão procurar",
-    direction: "reverse",
   },
 }
 
-export const Secondary: Story = {}
-
-export const Large: Story = {}
-
-export const Small: Story = {}
+export const Reverse: Story = {
+  args: {
+    placeholder: "Buscar aqui",
+    buttonTitle: "Botão procurar",
+    direction: "reverse",
+  },
+}

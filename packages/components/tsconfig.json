@@ -1,6 +1,7 @@
 {
   "extends": ["@jsm/ts-config/components.json"],
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"]
     }
