@@ -1,0 +1,19 @@
+{
+  "extends": "@jsm/ts-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist/",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}
