@@ -1,0 +1,13 @@
+{
+  "extends": ["@jsm/ts-config/react-library.json"],
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./app/*"]
+    }
+  },
+  "include": ["app/**/*.ts", "app", "vite.config.ts"]
+}
