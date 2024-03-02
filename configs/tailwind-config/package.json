@@ -2,7 +2,12 @@
   "name": "@jsm/tailwind-config",
   "version": "0.0.0",
   "private": true,
+  "exports": {
+    ".": "./tailwind.config.ts",
+    "./globals.css": "./globals.css"
+  },
   "devDependencies": {
-    "tailwindcss": "^3.4.1"
+    "@jsm/ts-config": "workspace:*",
+    "tailwindcss": "^3.4.0"
   }
 }
