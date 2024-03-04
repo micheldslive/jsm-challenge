@@ -1,0 +1,24 @@
+{
+  "greeting": "Have a great day!",
+  "page2": "Go to Page 2",
+  "header": {
+    "search": {
+      "placeholder": "Search here"
+    },
+    "locale": {
+      "label": "Change language"
+    },
+    "theme": {
+      "label": "Change theme",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  },
+
+  "footer": {
+    "company": {
+      "name": "Juntos Somos Mais Loyalty S.A."
+    }
+  }
+}

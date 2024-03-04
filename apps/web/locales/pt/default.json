@@ -1,0 +1,23 @@
+{
+  "greeting": "Hab einen schönen Tag!",
+  "page2": "Gehe zu Seite 2",
+  "header": {
+    "search": {
+      "placeholder": "Busque aqui"
+    },
+    "locale": {
+      "label": "Mudar idioma"
+    },
+    "theme": {
+      "label": "Mudar tema",
+      "light": "Claro",
+      "dark": "Escuro",
+      "system": "Sistema"
+    }
+  },
+  "footer": {
+    "company": {
+      "name": "Juntos Somos Mais Fidelização S.A."
+    }
+  }
+}
