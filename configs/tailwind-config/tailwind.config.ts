@@ -2,10 +2,19 @@ import { Config } from "tailwindcss"
 
 const config: Config = {
   content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: ["class"],
   theme: {
     extend: {
       colors: {
         "neutral-350": "#B0B0B0",
+        "neutral-360": "#4f4f4f",
+        "neutral-750": "#3A3A3A",
+        "neutral-760": "#c5c5c5",
+      },
+    },
+    container: {
+      screens: {
+        jsm: "1136px",
       },
     },
     transitionTimingFunction: {

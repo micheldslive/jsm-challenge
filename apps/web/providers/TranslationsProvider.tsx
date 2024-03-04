@@ -5,7 +5,7 @@ import { ReactNode } from "react"
 import initTranslations from "~/app/i18n"
 import { Resource, createInstance } from "i18next"
 
-export default function TranslationsProvider({
+export const TranslationsProvider = ({
   children,
   locale,
   namespaces,
@@ -15,7 +15,7 @@ export default function TranslationsProvider({
   locale: string
   namespaces: string[]
   resources: Resource
-}) {
+}) => {
   const i18n = createInstance()
 
   initTranslations(locale, namespaces, i18n, resources)

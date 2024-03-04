@@ -1,20 +1,24 @@
+"use client"
+
 import React, { ComponentProps, forwardRef, useRef, useState } from "react"
 import { tv } from "tailwind-variants"
 import { mergeRefs } from "react-merge-refs"
 import { ArrowIcon } from "@jsm/assets/ui"
 
-interface OptionsParams {
+export interface OptionsParams {
   value?: string
   label?: string
 }
 
 export interface OptionsProps {
-  options?: Omit<OptionsParams, "open">[]
+  options?: OptionsParams[]
 }
 
 export interface SelectProps
-  extends Omit<ComponentProps<"input">, "ref">,
-    OptionsProps {}
+  extends Omit<ComponentProps<"input">, "ref" | "onChange">,
+    OptionsProps {
+  onChange(value?: string): void
+}
 
 const optionTV = tv({
   base: "transition-all duration-300",
@@ -39,10 +43,11 @@ const optionsTV = tv({
 })
 
 export const Select = forwardRef<HTMLInputElement, SelectProps>(
-  ({ title, options, ...props }, ref) => {
+  ({ title, options, onChange, value, ...props }, ref) => {
     const [open, setOpen] = useState<boolean>(false)
     const [option, setOption] = useState<OptionsParams>({})
     const inputRef = useRef<HTMLInputElement>(null)
+    const current = options?.find((option) => option.value === value)
 
     const handleOption = (props: OptionsParams) => {
       setOption((option) => ({ ...option, ...props }))
@@ -51,7 +56,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
     return (
       <>
         <div
-          className='relative text-lg w-48 z-50'
+          className='relative text-lg w-full max-w-48 z-50'
           title={title}
           onClick={(event) => {
             event.currentTarget.focus()
@@ -64,9 +69,14 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
             className='flex items-center justify-between px-3 py-2 bg-white w-full rounded-lg'
             title={title}
           >
-            <input type='hidden' {...props} ref={mergeRefs([ref, inputRef])} />
+            <input
+              type='hidden'
+              {...props}
+              value={option.value}
+              ref={mergeRefs([ref, inputRef])}
+            />
             <span className='text-sm min-h-5'>
-              {option.label ?? (
+              {current?.label ?? (
                 <span className='text-neutral-300'>{props.placeholder}</span>
               )}
             </span>
@@ -89,6 +99,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
                       label,
                       value,
                     })
+                    onChange(value)
                     setOpen(false)
                   }}
                 >
