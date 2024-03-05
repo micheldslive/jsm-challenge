@@ -7,6 +7,7 @@ import { QueryParamProvider } from "use-query-params"
 import { Tooltip } from "@jsm/ui"
 import { JSMContextProvider } from "~/core/context"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { useJSMStore } from "../core/storage"
 
 interface MoreProvidersProps {
   children: ReactNode
@@ -14,14 +15,17 @@ interface MoreProvidersProps {
 
 export const MoreProviders = ({ children }: MoreProvidersProps) => {
   const [queryClient] = useState(() => new QueryClient())
+  const { theme } = useJSMStore()
   return (
     <Tooltip.Provider>
-      <ThemeProvider attribute='class' disableTransitionOnChange>
+      <ThemeProvider
+        attribute='class'
+        disableTransitionOnChange
+        defaultTheme={theme}
+      >
         <QueryParamProvider adapter={NextAdapterApp}>
           <QueryClientProvider client={queryClient}>
-            <JSMContextProvider>
-              {children}
-            </JSMContextProvider>
+            <JSMContextProvider>{children}</JSMContextProvider>
           </QueryClientProvider>
         </QueryParamProvider>
       </ThemeProvider>
