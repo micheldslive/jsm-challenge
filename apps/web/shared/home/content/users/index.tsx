@@ -27,6 +27,7 @@ export const Users = () => {
       setPaginateParams({
         itemsCount: data.itemsCount,
         currentPage: data.currentPage,
+        currentCount: data.items.length,
         maxPerPage: 9,
       })
     }
@@ -37,9 +38,7 @@ export const Users = () => {
       <div className='grid rsm:!grid-cols-1 rmd:grid-cols-2 grid-cols-3 gap-4'>
         <Preload loading={isLoading}>
           {data?.items?.map((item, index) => {
-            const fullName = startCase(
-              `${item?.name.first} ${item?.name.last}`,
-            )
+            const fullName = startCase(`${item?.name.first} ${item?.name.last}`)
             return (
               <Link href={`/details?name=${fullName}`}>
                 <Card
@@ -54,7 +53,9 @@ export const Users = () => {
                   )}
                   title={fullName}
                   address={startCase(`${item?.location.street}`)}
-                  country={startCase(`${item?.location.city} ${item?.location.state} CEP-${item?.location.postcode}`)}
+                  country={startCase(
+                    `${item?.location.city} ${item?.location.state} CEP-${item?.location.postcode}`,
+                  )}
                   loading={isLoading}
                 />
               </Link>
