@@ -9,7 +9,7 @@ import { Theme } from "./Theme"
 export const Header = () => {
   return (
     <header className='bg-neutral-100 dark:bg-neutral-750 sticky top-0 z-50'>
-      <Container className='lg:container py-6 flex flex-col gap-4 items-center justify-between md:!flex-row md:gap-0'>
+      <Container className='py-6 flex rmd:flex-col rmd:gap-4 items-center justify-between'>
         <JSMLogo />
         <SearchForm />
         <div className='flex items-center gap-4'>

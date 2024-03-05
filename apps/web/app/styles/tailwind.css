@@ -6,4 +6,8 @@
   :not(.dark) body {
     color: #222d39;
   }
+
+  .container {
+    max-width: 1104px !important;
+  }
 }

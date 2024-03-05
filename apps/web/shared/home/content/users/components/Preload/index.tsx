@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react"
-import { Card } from "../Card/"
+import { Card } from "../Card"
 
 interface PreloadProps extends PropsWithChildren {
   loading?: boolean
