@@ -10,9 +10,9 @@ const frameVariants = tv({
 export const Frame = forwardRef<HTMLDivElement, FrameProps>(
   ({ children, className, ...props }, ref) => {
     return (
-      <section className={frameVariants({ className })} ref={ref} {...props}>
+      <div className={frameVariants({ className })} ref={ref} {...props}>
         {children}
-      </section>
+      </div>
     )
   },
 )

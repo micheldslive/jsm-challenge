@@ -1,15 +1,14 @@
 "use client"
 
 import { PropsWithChildren } from "react"
-import { Header } from "~/shared/header"
-import { Footer } from "~/shared/footer"
+import { Shared } from "~/shared"
 
 export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <Header />
+      <Shared.Header />
       {children}
-      <Footer />
+      <Shared.Footer />
     </>
   )
 }

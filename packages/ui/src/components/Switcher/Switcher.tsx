@@ -30,7 +30,7 @@ export const Switcher = ({
   return (
     <>
       <Tooltip.Root>
-        <Dropdown.Root>
+        <Dropdown.Root modal={false}>
           <Dropdown.Trigger asChild>
             <Tooltip.Trigger asChild>
               <Button variant='transparent' size='icon'>
@@ -46,7 +46,7 @@ export const Switcher = ({
               <Dropdown.Item
                 key={value}
                 onClick={() => handleChange(value)}
-                className='flex items-center gap-2 capitalize'
+                className='flex items-center gap-2 capitalize cursor-pointer'
               >
                 {icon}
                 {label}
@@ -55,7 +55,7 @@ export const Switcher = ({
           </Dropdown.Content>
         </Dropdown.Root>
         {label && (
-          <Tooltip.Content side={"right"} sideOffset={4}>
+          <Tooltip.Content side={"bottom"} sideOffset={4}>
             <span>{label}</span>
           </Tooltip.Content>
         )}

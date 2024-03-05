@@ -8,7 +8,12 @@ export {
   type SelectProps,
   type OptionsParams,
 } from "./components/Select"
-export { Switcher, SwitcherStory, type SwitcherProps } from "./components/Switcher"
+export {
+  Switcher,
+  SwitcherStory,
+  type SwitcherProps,
+} from "./components/Switcher"
 export * from "./components/Button"
 export * from "./components/Tooltip"
 export * from "./components/Dropdown"
+export { Pagination } from "./components/Pagination"
