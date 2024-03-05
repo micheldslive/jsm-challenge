@@ -1,5 +1,5 @@
 import { Frame } from "@jsm/ui"
-import { StatesForm } from "./states"
+import { StatesForm } from "./States"
 
 export const Aside = () => {
   return (
