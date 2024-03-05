@@ -14,13 +14,13 @@ const buttonItemsTV = tv({
   base: "min-w-8 !w-8 !h-8",
   variants: {
     isActive: {
-      true: "text-bold",
+      true: "!font-bold",
     },
   },
 })
 
 const buttonUnderlineTV = tv({
-  base: "absolute bottom-0 block h-1 bg-neutral-400 transition-all duration-300 left-0 w-0 group-hover:w-full",
+  base: "absolute bottom-0 block h-1 bg-neutral-400 transition-all duration-300 left-0 w-0 group-hover:w-full -bottom-2 rounded-lg",
   variants: {
     isActive: {
       true: "w-full",
@@ -30,12 +30,17 @@ const buttonUnderlineTV = tv({
 
 const buttonsControlsTV = tv({
   base: "!bg-neutral-750 min-w-8 !w-8 !h-8 mx-2 transition-all duration-300 disabled:opacity-20 disabled:cursor-not-allowed",
+  variants: {
+    isOnePage: {
+      true: "!hidden",
+    },
+  },
 })
 
 interface PaginationProps
   extends Pick<
     PaginationPrimitiveProps,
-    "total" | "initialPage" | "onChange"
+    "total" | "initialPage" | "onChange" | "page"
   > {}
 
 export const Pagination = (props: PaginationProps) => {
@@ -54,7 +59,7 @@ export const Pagination = (props: PaginationProps) => {
       return (
         <button
           key={key}
-          className={buttonsControlsTV({ className })}
+          className={buttonsControlsTV({ className, isOnePage: total === 1 })}
           disabled={activePage === 1}
           onClick={onPrevious}
         >
@@ -66,7 +71,7 @@ export const Pagination = (props: PaginationProps) => {
       return (
         <button
           key={key}
-          className={buttonsControlsTV({ className })}
+          className={buttonsControlsTV({ className, isOnePage: total === 1 })}
           disabled={activePage === total}
           onClick={onNext}
         >

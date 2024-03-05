@@ -22,13 +22,9 @@ export interface GetParams<T> {
   (req: NextApiRequest, res: NextApiResponse): Promise<T | void>
 }
 
-export type QUeryParams = {
+export type QueryParams = {
   order?: OrderModel
 } & NextApiRequest["query"]
-
-interface Test {
-  test: keyof QUeryParams["order"]
-}
 
 export interface UsersModelProps {
   getAllUsers: GetParams<UsersModel>

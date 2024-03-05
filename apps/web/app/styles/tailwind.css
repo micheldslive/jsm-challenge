@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  :not(.dark) body {
+    color: #222d39;
+  }
+}

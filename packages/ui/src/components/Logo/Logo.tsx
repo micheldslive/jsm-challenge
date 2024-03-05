@@ -29,7 +29,6 @@ const logoVariants = tv({
 
 export const Logo = forwardRef<SVGSVGElement, LogoProps>(
   ({ className, color, size, ...props }, ref) => {
-    console.log(JSMLogo)
     return (
       <JSMLogo
         stopColor={props.fill}

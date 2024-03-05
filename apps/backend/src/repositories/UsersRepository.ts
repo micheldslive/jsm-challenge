@@ -1,7 +1,7 @@
 import { HTTPResponse } from "../http"
-import { statesSchema } from "../schemas"
+// import { statesSchema } from "../schemas"
 import {
-  QUeryParams,
+  QueryParams,
   ResultsModel,
   UsersModel,
   UsersModelProps,
@@ -53,8 +53,10 @@ export class UsersRepository implements UsersModelProps {
 
   async getUsersQuery(req: NextApiRequest, res: NextApiResponse) {
     try {
-      const { currentPage, maxPerPage, search, order, states }: QUeryParams =
+      const { currentPage, maxPerPage, search, order, ...params }: QueryParams =
         req.query
+
+      const states = params["states[]"]
 
       const allUsers = await this.getAllUsers(req, res)
 
@@ -99,7 +101,7 @@ export class UsersRepository implements UsersModelProps {
         })
       }
 
-      return HTTPResponse.validate(states, statesSchema, res)
+      return HTTPResponse.ok(res, { states })
     } catch {
       return HTTPResponse.error(res, {
         code: "INTERNAL_SERVER_ERROR",

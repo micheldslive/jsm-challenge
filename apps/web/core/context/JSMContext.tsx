@@ -4,6 +4,7 @@ import { useQuery, type UseQueryResult } from "@tanstack/react-query"
 import { HTTPClient } from "~/core/http"
 import { AxiosRequestConfig } from "axios"
 import { PaginateModel, UserModel, StatesModel } from "@jsm/backend"
+import { ParamsProps } from "../storage"
 
 export interface HandleQueryProps {
   key: string
@@ -12,11 +13,14 @@ export interface HandleQueryProps {
 
 type GetProps<T, R> = (props: Record<string, T>) => UseQueryResult<R, Error>
 
-type ParamsProps = number | string | string[]
-
 type GetQueryUsersProps = GetProps<ParamsProps, PaginateModel>
 type GetUserProps = GetProps<string, UserModel>
-type GetStatesProps = GetProps<string, StatesModel>
+type GetStatesProps = GetProps<
+  string,
+  {
+    states: StatesModel
+  }
+>
 
 interface JSMContextProps {
   getQueryUsers: GetQueryUsersProps
@@ -38,7 +42,6 @@ export const JSMContextProvider: React.FC<React.PropsWithChildren> = ({
   const httpRequest = async <T extends object>(
     configs: AxiosRequestConfig,
   ): Promise<T> => {
-    console.log(configs.params, "configs.params")
     const response = await HTTPClient<T>({
       method: "GET",
       ...configs,
@@ -94,24 +97,29 @@ export const JSMContextProvider: React.FC<React.PropsWithChildren> = ({
             },
           })
         } catch (errors) {
-          console.log(errors)
+          console.error(errors)
         }
       },
       refetchOnWindowFocus: true,
     })
   }
 
-  const getStates: GetStatesProps = () => {
+  const getStates: GetStatesProps = ({ reload }) => {
     return useQuery({
-      queryKey: [queryName.states],
-      queryFn: async () => {
+      queryKey: [queryName.states, reload],
+      queryFn: async ({ queryKey: [, reload] }) => {
         try {
-          await httpRequest<StatesModel>({
+          return await httpRequest<{
+            states: StatesModel
+          }>({
             method: "GET",
             url: "/api/states",
+            params: {
+              reload,
+            },
           })
         } catch (errors) {
-          console.log(errors)
+          console.error(errors)
         }
       },
       refetchOnWindowFocus: true,

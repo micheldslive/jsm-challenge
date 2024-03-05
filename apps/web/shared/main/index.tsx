@@ -6,7 +6,7 @@ import { Breadcrumbs } from "./breadcrumbs"
 import { PropsWithChildren } from "react"
 
 export interface MainProps extends PropsWithChildren {
-  title?: string
+  title: string
 }
 
 export const Main = ({ title, children }: MainProps) => {
@@ -16,7 +16,7 @@ export const Main = ({ title, children }: MainProps) => {
       <Container className='pt-6 pb-2'>
         <Breadcrumbs homeElement={"Home"} separator={"/"} />
         <h1 className='pt-5 pb-1 text-3xl font-bold text[#222D39]'>
-          {title ? t(title) : "Home"}
+          {t(title)}
         </h1>
       </Container>
       {children}
