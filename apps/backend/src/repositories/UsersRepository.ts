@@ -85,6 +85,31 @@ export class UsersRepository implements UsersModelProps {
       })
     }
   }
+  async getUserByName(req: NextApiRequest, res: NextApiResponse) {
+    try {
+      const { name }: QueryParams = req.query
+
+      const allUsers = await this.getAllUsers(req, res)
+
+      if (!allUsers) {
+        return HTTPResponse.error(res, {
+          code: "NOT_FOUND",
+          message: "Ops... dados não encontrados.",
+        })
+      }
+
+      const user = matchSorter(allUsers, String(name ?? ""), {
+        keys: [(item) => `${item.name.first} ${item.name.last}`],
+      })
+
+      return HTTPResponse.ok(res, user)
+    } catch {
+      return HTTPResponse.error(res, {
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Erro ao obter usuários.",
+      })
+    }
+  }
 
   async getStatesList(req: NextApiRequest, res: NextApiResponse) {
     try {

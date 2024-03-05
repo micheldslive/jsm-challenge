@@ -11,6 +11,9 @@ export class UsersService implements UsersModelProps {
   public async getUsersQuery(req: NextApiRequest, res: NextApiResponse) {
     return await this.usersRepository.getUsersQuery(req, res)
   }
+  public async getUserByName(req: NextApiRequest, res: NextApiResponse) {
+    return await this.usersRepository.getUserByName(req, res)
+  }
 
   public async getStatesList(req: NextApiRequest, res: NextApiResponse) {
     return await this.usersRepository.getStatesList(req, res)

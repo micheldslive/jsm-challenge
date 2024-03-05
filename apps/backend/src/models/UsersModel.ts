@@ -28,6 +28,7 @@ export type QueryParams = {
 
 export interface UsersModelProps {
   getAllUsers: GetParams<UsersModel>
+  getUserByName: GetParams<UsersModel>
   getUsersQuery: GetParams<UsersQueryProps>
   getStatesList: GetParams<string[]>
 }
