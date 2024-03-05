@@ -20,7 +20,7 @@ const containerTV = tv({
 })
 
 const inputTV = tv({
-  base: "w-full outline-none",
+  base: "w-full outline-none bg-transparent dark:text-neutral-750",
   variants: {
     direction: {
       default: "pr-5",

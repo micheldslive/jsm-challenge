@@ -1,4 +1,4 @@
-import React, { ComponentProps, forwardRef } from "react"
+import React, { ComponentProps } from "react"
 import { tv } from "tailwind-variants"
 import fallback from "@jsm/assets/images/avatar.png"
 
@@ -39,30 +39,31 @@ const addressVariants = tv({
   },
 })
 
-export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, image, title, address, country, loading, ...props }, ref) => {
-    console.log(fallback.src)
-    return (
-      <article
-        className={cardVariants({ loading, className })}
-        ref={ref}
-        {...props}
-      >
-        <div className='h-20 w-20 overflow-hidden rounded-full'>
-          {image && !loading ? (
-            image({ fallback: fallback.src })
-          ) : (
-            <img src={fallback.src} alt='Avatar image' />
-          )}
-        </div>
-        <h4 className={titleVariants({ loading })}>{title}</h4>
-        <span className={addressVariants({ loading, className: "text-sm" })}>
-          {address}
-        </span>
-        <span className={addressVariants({ loading, className: "text-xs" })}>
-          {country}
-        </span>
-      </article>
-    )
-  },
-)
+export const Card = ({
+  className,
+  image,
+  title,
+  address,
+  country,
+  loading,
+  ...props
+}: CardProps) => {
+  return (
+    <article className={cardVariants({ loading, className })} {...props}>
+      <div className='h-20 w-20 overflow-hidden rounded-full'>
+        {image && !loading ? (
+          image({ fallback: fallback.src })
+        ) : (
+          <img src={fallback.src} alt='Avatar image' />
+        )}
+      </div>
+      <h4 className={titleVariants({ loading })}>{title}</h4>
+      <span className={addressVariants({ loading, className: "text-sm" })}>
+        {address}
+      </span>
+      <span className={addressVariants({ loading, className: "text-xs" })}>
+        {country}
+      </span>
+    </article>
+  )
+}
