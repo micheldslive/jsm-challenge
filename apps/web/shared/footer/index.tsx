@@ -18,7 +18,7 @@ export const Footer = () => {
 
         <div className='pt-2 pb-4 flex  flex-col gap-4'>
           <h5 className='text-white text-sm font-normal text-center'>
-            Siga-nos nas redes sociais:
+            {t("footer.social.follow")}
           </h5>
           <Social
             social={[
