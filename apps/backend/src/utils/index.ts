@@ -13,7 +13,7 @@ type Paginate<T> = {
 export function paginate<T>({ users, currentPage, maxPerPage }: Paginate<T>) {
   const params = {
     currentPage: Number(currentPage ?? 1),
-    maxPerPage: Number(maxPerPage ?? 10),
+    maxPerPage: Number(maxPerPage ?? 9),
   }
   const itemsCount = users.length
   const totalPages = Math.ceil(itemsCount / params.maxPerPage)
@@ -22,7 +22,8 @@ export function paginate<T>({ users, currentPage, maxPerPage }: Paginate<T>) {
   const items = users.slice(startIndex, endIndex)
 
   return {
-    ...params,
+    currentPage: totalPages < params.currentPage ? 1 : params.currentPage,
+    maxPerPage: params.maxPerPage,
     totalPages,
     itemsCount,
     items,
