@@ -1,81 +1,101 @@
-# Turborepo starter
+<p align="center">
+  <img src="./docs/assets/banner.svg" /> 
+  <br />
+</p>
+<p align="center">
+  <a href="https://github.com/micheldslive/jsm-challenge#about-">About</a> •  
+  <a href="https://github.com/micheldslive/jsm-challenge#techs-">Techs</a> •  
+  <a href="https://github.com/micheldslive/jsm-challenge#getting-started-">Getting started</a> •  
+  <a href="https://jsm.mi-code.dev/" target="_blank">Live demo</a> •
+</p>
 
-This is an official starter Turborepo.
+## About 💻
 
-## Using this example
+Project made for Juntos Somos Mais front end challenge.
 
-Run the following command:
+## Libs, Apps, Configs and Packages 🚀
 
-```sh
-npx create-turbo@latest
-```
+The project was developed with following main libraries:
 
-## What's inside?
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `@jsm/web`: a [Next.js](https://nextjs.org/) app
-- `@jsm/storybook`: another [Storybook](https://storybook.js.org/) app
-- `@jsm/components`: a stub React component library shared by both `web` and `storybook` applications
-- `@jsm/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@jsm/ts-config`: `tsconfig.json`s used throughout the monorepo
+- `app`
+  - `@jsm/backend`: a [Node.js](https://nodejs.org/en) app, architecture for use in nextjs web application endpoints
+  - `@jsm/web`: a [Next.js](https://nextjs.org/) app
+- `packages`
+  - `@jsm/storybook`: another [Storybook](https://storybook.js.org/) app
+  - `@jsm/ui`: a stub React component library shared by both `web` and `storybook` applications
+- `configs`
+  - `@jsm/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+  - `@jsm/assets`: `assets` used throughout the monorepo
+  - `@jsm/ts-config`: `tsconfig.json` used throughout the monorepo
+  - `@jsm/tailwind-config`: `tailwind.config.json` and `postcss.config.json` used throughout the monorepo
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
+The project was developed with following main libraries:
 
-This Turborepo has some additional tools already setup for you:
+- Styling with **[TailwindCSS](https://tailwindcss.com)**
+- **[Radix UI](https://www.radix-ui.com)** accessible and customizable library
+- **[Storybook](https://storybook.js.org/)** to create a domented app library
+- **[React Hook Form](https://react-hook-form.com)** to deal with forms
+- Modern State Manager with **[Zustand](https://github.com/pmndrs/zustand)**
+- Linting with **[Eslint](https://eslint.org)**
+- Conventional commits with **[config-conventional](https://www.npmjs.com/package/@commitlint/config-conventional?activeTab=versions)**
+- Code formatting with **[Prettier](https://prettier.io)**
+- Git hook with **[Husky](https://github.com/typicode/husky)**
+- **[Lint Staged](https://github.com/okonet/lint-staged)** to check staged files before commits
+- Static Types with **[Typescript](https://www.typescriptlang.org)**
+- Runtime schema validation with **[Zod](https://zod.dev)**
+- Generate new components with **[turbo/gen](https://turbo.build/repo/docs/reference/command-line-reference/gen)**
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## Getting Started 📦
 
-### Build
+Clone this repository in your local machine:
 
-To build all apps and packages, run the following command:
-
+```bash
+git clone https://github.com/micheldslive/jsm-challenge.git
 ```
-cd my-turborepo
-pnpm build
+
+Then move to the project directory
+
+```bash
+cd jsm-challenge
 ```
 
-### Develop
+Install the project dependencies:
 
-To develop all apps and packages, run the following command:
-
+```bash
+pnpm i
+# or
+yarn
 ```
-cd my-turborepo
+
+Run the main web application locally and open up [local host](http://localhost:3000)
+
+```bash
 pnpm dev
+# or
+yarn dev
 ```
 
-### Remote Caching
+The main components of the application were documented. To access them in their locale, open the following up [local host](http://localhost:6006)
 
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
+## Developer 💻<br>
 
-```
-cd my-turborepo
-npx turbo login
-```
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/micheldslive">
+        <img src="https://avatars.githubusercontent.com/u/55795597?v=4" width="100" alt="Foto no GitHub"/><br>
+        <sub>
+          <b>Michel Domingos</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 🖊️ License
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+This project is licensed under the MIT License - see the LICENSE page for details.
