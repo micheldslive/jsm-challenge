@@ -2,18 +2,32 @@ import { useJSMContext } from "~/core/context"
 import { Card } from "./components/Card/"
 import { Pagination } from "@jsm/ui"
 import Image from "next/image"
-import { useParamsStore } from "~/core/storage"
+import { usePaginateParamsStore, useParamsStore } from "~/core/storage"
 import { useEffect, useState } from "react"
 import { Preload } from "./components/Preload"
 
 export const Users = () => {
   const { getQueryUsers } = useJSMContext()
-  const { setParams, pagination } = useParamsStore()
+  const { order, states, search } = useParamsStore()
+  const { setPaginateParams, currentPage, maxPerPage } =
+    usePaginateParamsStore()
   const [totalPages, setTotalPages] = useState<number>(0)
-  const { data, isLoading } = getQueryUsers({ ...pagination })
-
+  const { data, isLoading } = getQueryUsers({
+    currentPage,
+    maxPerPage,
+    order,
+    states,
+    search,
+  })
   useEffect(() => {
-    data?.totalPages && setTotalPages(data.totalPages)
+    if (data) {
+      setTotalPages(data.totalPages)
+      setPaginateParams({
+        itemsCount: data.itemsCount,
+        currentPage: data.currentPage,
+        maxPerPage: 9,
+      })
+    }
   }, [data])
 
   return (
@@ -42,15 +56,13 @@ export const Users = () => {
       <div className='w-full flex justify-center py-4'>
         <Pagination
           total={totalPages}
-          initialPage={1}
+          initialPage={data?.currentPage}
+          page={data?.currentPage}
           onChange={(currentPage) => {
-            console.log(currentPage)
-            setParams({
-              pagination: {
-                currentPage,
-                totalPages,
-                maxPerPage: 9,
-              },
+            setPaginateParams({
+              currentPage,
+              maxPerPage: 9,
+              itemsCount: data ? data.itemsCount : 0,
             })
           }}
         />
