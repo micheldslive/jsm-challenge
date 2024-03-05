@@ -15,7 +15,11 @@
   },
   "aside": {
     "states": {
-      "title": "By State"
+      "title": "By State",
+      "seeAll": {
+        "open": "See all",
+        "close": "Close all"
+      }
     }
   },
   "main": {
@@ -32,11 +36,19 @@
       "plural": "items",
       "order": {
         "label": "Order by:",
+        "placeholder": "Select",
         "first": "Name",
         "last": "Lastname",
         "date": "Date"
       }
-
+    },
+    "user": {
+      "email": "Email",
+      "gender": "Gender",
+      "registered": {
+        "label": "Registration date",
+        "info": ", {{years}} years ago"
+      }
     }
   },
   "footer": {

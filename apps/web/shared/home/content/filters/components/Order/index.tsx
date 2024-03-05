@@ -33,6 +33,7 @@ export const Order = () => {
         value={order}
         options={options}
         className='min-w-28'
+        placeholder={t("main.filters.order.placeholder")}
       />
     </div>
   )

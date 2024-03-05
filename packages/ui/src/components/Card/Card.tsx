@@ -1,4 +1,4 @@
-import React, { ComponentProps } from "react"
+import React, { ComponentPropsWithoutRef } from "react"
 import { tv } from "tailwind-variants"
 import fallback from "@jsm/assets/images/avatar.png"
 
@@ -6,7 +6,7 @@ interface FallBackProps {
   fallback: string
 }
 
-export interface CardProps extends Omit<ComponentProps<"div">, "ref"> {
+export interface CardProps extends ComponentPropsWithoutRef<"div"> {
   image?: (props: FallBackProps) => React.ReactNode
   loading?: boolean
   address?: string
@@ -14,10 +14,10 @@ export interface CardProps extends Omit<ComponentProps<"div">, "ref"> {
 }
 
 const cardVariants = tv({
-  base: "p-10 flex flex-col gap-5 items-center transition-all duration-300",
+  base: "p-10 flex flex-col gap-5 items-center",
   variants: {
     loading: {
-      true: "animate-pulse",
+      true: "animate-skeleton",
     },
   },
 })
@@ -31,10 +31,10 @@ const titleVariants = tv({
   },
 })
 const addressVariants = tv({
-  base: "w-[60%] transition-all duration-300 text-center",
+  base: "w-[80%] transition-all duration-300 text-center",
   variants: {
     loading: {
-      true: "w-[40%] h-5 rounded-full bg-neutral-300 text-transparent",
+      true: "w-[60%] h-5 rounded-full bg-neutral-300 text-transparent",
     },
   },
 })
@@ -46,11 +46,12 @@ export const Card = ({
   address,
   country,
   loading,
+  children,
   ...props
 }: CardProps) => {
   return (
-    <article className={cardVariants({ loading, className })} {...props}>
-      <div className='h-20 w-20 overflow-hidden rounded-full'>
+    <div className={cardVariants({ loading, className })} {...props}>
+      <div className='min-h-20 min-w-20 max-h-64 max-w-64 overflow-hidden rounded-full'>
         {image && !loading ? (
           image({ fallback: fallback.src })
         ) : (
@@ -64,6 +65,9 @@ export const Card = ({
       <span className={addressVariants({ loading, className: "text-xs" })}>
         {country}
       </span>
-    </article>
+      {children && (
+        <span className={titleVariants({ loading })}>{children}</span>
+      )}
+    </div>
   )
 }

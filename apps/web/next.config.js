@@ -5,9 +5,13 @@ module.exports = {
     JSM_API_BASE_PATH: process.env.JSM_API_BASE_PATH,
   },
   images: {
-    domains: [
-      "localhost",
-      "randomuser.me",
+    remotePatterns: [
+      {
+        hostname: "localhost",
+      },
+      {
+        hostname: "randomuser.me",
+      },
     ],
   },
 }

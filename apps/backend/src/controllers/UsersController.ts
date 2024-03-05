@@ -14,6 +14,9 @@ export class UsersController {
   static async getUsersQuery(req: NextApiRequest, res: NextApiResponse) {
     return await this.usersService.getUsersQuery(req, res)
   }
+  static async getUserByName(req: NextApiRequest, res: NextApiResponse) {
+    return await this.usersService.getUserByName(req, res)
+  }
 
   static async getStatesList(req: NextApiRequest, res: NextApiResponse) {
     return await this.usersService.getStatesList(req, res)
