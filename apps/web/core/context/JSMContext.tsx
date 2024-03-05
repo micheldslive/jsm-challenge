@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from "react"
 import { useQuery, type UseQueryResult } from "@tanstack/react-query"
 import { HTTPClient } from "~/core/http"
 import { AxiosRequestConfig } from "axios"
-import { PaginateModel, UserModel, StatesModel } from "@jsm/backend"
+import { PaginateModel, UserModel, StatesModel, UsersModel } from "@jsm/backend"
 import { ParamsProps } from "../storage"
 
 export interface HandleQueryProps {
@@ -14,7 +14,7 @@ export interface HandleQueryProps {
 type GetProps<T, R> = (props: Record<string, T>) => UseQueryResult<R, Error>
 
 type GetQueryUsersProps = GetProps<ParamsProps, PaginateModel>
-type GetUserProps = GetProps<string, UserModel>
+type GetUserProps = GetProps<string, UsersModel>
 type GetStatesProps = GetProps<
   string,
   {
@@ -89,7 +89,7 @@ export const JSMContextProvider: React.FC<React.PropsWithChildren> = ({
       queryKey: [queryName.user, name],
       queryFn: async ({ queryKey: [, name] }) => {
         try {
-          await httpRequest<UserModel>({
+          return await httpRequest<UserModel>({
             method: "GET",
             url: "/api/user",
             params: {

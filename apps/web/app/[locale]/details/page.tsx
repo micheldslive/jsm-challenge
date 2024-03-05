@@ -1,9 +1,11 @@
 import { Shared } from "~/shared"
 
-async function Details() {
-  return <Shared.Main title='main.title.detail'>
-    DETAILS
-  </Shared.Main>
+async function Page() {
+  return (
+    <Shared.Main title='main.title.detail'>
+      <Shared.Member />
+    </Shared.Main>
+  )
 }
 
-export default Details
+export default Page
