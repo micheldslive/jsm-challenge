@@ -43,10 +43,10 @@
       }
     },
     "user": {
-      "email": "Email",
-      "gender": "Gender",
+      "email": "Email:",
+      "gender": "Gender:",
       "registered": {
-        "label": "Registration date",
+        "label": "Registration date:",
         "info": ", {{years}} years ago"
       }
     }
@@ -54,6 +54,9 @@
   "footer": {
     "company": {
       "name": "Juntos Somos Mais Loyalty S.A."
+    },
+    "social": {
+      "follow": "Follow us on social media:"
     }
   }
 }

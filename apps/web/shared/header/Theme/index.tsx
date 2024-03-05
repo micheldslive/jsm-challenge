@@ -22,7 +22,7 @@ const labelVariants: Record<string, string> = {
 export const Theme = () => {
   const [isMounted, setIsMounted] = useState(false)
   const { theme, setTheme, themes } = useTheme()
-  const { setTheme: setStoreTheme } = useJSMStore()
+  const { setStoreTheme } = useJSMStore()
   const { t } = useTranslation()
 
   const options = [
