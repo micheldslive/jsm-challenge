@@ -1,7 +1,11 @@
 import { Config } from "tailwindcss"
+import ta from "tailwindcss-animate"
 
 const config: Config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: ["class"],
   theme: {
     extend: {
@@ -14,7 +18,7 @@ const config: Config = {
     },
     container: {
       screens: {
-        jsm: "1136px",
+        jsm: "1104px",
       },
     },
     transitionTimingFunction: {
@@ -32,6 +36,7 @@ const config: Config = {
       stroke: "stroke 1s cubic-bezier(0.65, 0, 0.45, 1) 0.1s forwards",
     },
   },
+  plugins: [ta],
 }
 
 export default config
