@@ -5,7 +5,7 @@ import { ComponentProps } from "react"
 type ContainerProps = ComponentProps<"section">
 
 const containerTV = tv({
-  base: "jsm:container mx-auto",
+  base: "jsm:container mx-auto lg:container px-4",
 })
 
 export const Container: React.FC<ContainerProps> = ({

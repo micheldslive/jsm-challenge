@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { Laptop, Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Switcher } from "@jsm/ui"
-import { useJSMStore } from "~/core/store"
+import { useJSMStore } from "~/core/storage"
 import { useTranslation } from "react-i18next"
 
 const iconVariants: Record<string, JSX.Element> = {
