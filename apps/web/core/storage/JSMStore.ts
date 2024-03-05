@@ -12,7 +12,7 @@ interface States {
 }
 
 interface Actions {
-  setTheme(theme: ThemeProps): void
+  setStoreTheme(theme: ThemeProps): void
   setLocale(locale: LocaleProps): void
 }
 
@@ -21,7 +21,7 @@ const createJSMStore = createStore<States & Actions>()(
     (set) => ({
       theme: "light",
       locale: "pt",
-      setTheme: (theme) => {
+      setStoreTheme: (theme) => {
         set(() => ({ theme }))
       },
       setLocale: (locale) => {
