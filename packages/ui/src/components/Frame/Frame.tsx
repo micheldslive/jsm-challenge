@@ -4,7 +4,7 @@ import { tv } from "tailwind-variants"
 export interface FrameProps extends Omit<ComponentProps<"div">, "ref"> {}
 
 const frameVariants = tv({
-  base: "p-5 border border-solid border-neutral-200 rounded-md overflow-hidden",
+  base: "p-5 border border-solid border-neutral-200 dark:border-neutral-800 rounded-md overflow-hidden",
 })
 
 export const Frame = forwardRef<HTMLDivElement, FrameProps>(

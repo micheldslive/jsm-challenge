@@ -21,11 +21,17 @@ export interface SelectProps
 }
 
 const optionTV = tv({
-  base: "transition-all duration-300",
+  base: "transition-colors duration-300 relative select-none rounded px-2 py-1.5 text-sm outline-none focus:bg-neutral-100 focus:text-neutral-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:focus:bg-neutral-800 dark:focus:text-neutral-50 flex items-center gap-2 capitalize cursor-pointer",
   variants: {
     active: {
-      true: "bg-gray-100",
+      true: "bg-gray-100 dark:bg-neutral-800",
     },
+  },
+})
+
+const arrowTV = tv({
+  base: "transition-all duration-300 fill-neutral-800 dark:fill-neutral-100",
+  variants: {
     open: {
       true: "rotate-180",
     },
@@ -33,7 +39,7 @@ const optionTV = tv({
 })
 
 const optionsTV = tv({
-  base: "absolute left-0 right-0 mb-4 bg-white divide-y rounded-lg shadow-lg overflow-hidden transform transition duration-500 in-select",
+  base: "absolute left-0 right-0 mb-4 p-1 bg-white rounded-lg shadow-lg border border-neutral-200 overflow-hidden transform transition duration-500 in-select dark:border-neutral-900 dark:bg-neutral-950 dark:text-neutral-50",
   variants: {
     open: {
       true: "translate-y-0 scale-y-100 opacity-100",
@@ -42,8 +48,12 @@ const optionsTV = tv({
   },
 })
 
+const containerTV = tv({
+  base: "relative text-lg w-full max-w-48 z-50",
+})
+
 export const Select = forwardRef<HTMLInputElement, SelectProps>(
-  ({ title, options, onChange, value, ...props }, ref) => {
+  ({ title, options, onChange, value, className, ...props }, ref) => {
     const [open, setOpen] = useState<boolean>(false)
     const [option, setOption] = useState<OptionsParams>({})
     const inputRef = useRef<HTMLInputElement>(null)
@@ -56,7 +66,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
     return (
       <>
         <div
-          className='relative text-lg w-full max-w-48 z-50'
+          className={containerTV({ className })}
           title={title}
           onClick={(event) => {
             event.currentTarget.focus()
@@ -66,7 +76,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
           tabIndex={0}
         >
           <button
-            className='flex items-center justify-between px-3 py-2 bg-white w-full rounded-lg'
+            className='flex items-center justify-between px-3 py-2 bg-transparent w-full rounded-lg'
             title={title}
           >
             <input
@@ -75,12 +85,14 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
               value={option.value}
               ref={mergeRefs([ref, inputRef])}
             />
-            <span className='text-sm min-h-5'>
+            <span className='text-sm min-h-5 dark:text-neutral-50'>
               {current?.label ?? (
-                <span className='text-neutral-300'>{props.placeholder}</span>
+                <span className='text-neutral-300 dark:text-neutral-800'>
+                  {props.placeholder}
+                </span>
               )}
             </span>
-            <ArrowIcon className={optionTV({ open })} />
+            <ArrowIcon className={arrowTV({ open })} />
           </button>
 
           <ul className={optionsTV({ open })}>
@@ -91,7 +103,7 @@ export const Select = forwardRef<HTMLInputElement, SelectProps>(
                   className={optionTV({
                     active: value === option.value,
                     className:
-                      "px-3 py-2 transition-colors duration-300 hover:bg-gray-100 text-sm cursor-pointer",
+                      "px-3 py-2 transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-neutral-800 text-sm cursor-pointer",
                   })}
                   onClick={(event) => {
                     event.stopPropagation()
