@@ -15,15 +15,17 @@ export function paginate<T>({ users, currentPage, maxPerPage }: Paginate<T>) {
     currentPage: Number(currentPage ?? 1),
     maxPerPage: Number(maxPerPage ?? 10),
   }
-  const totalPages = Math.ceil(users.length / params.maxPerPage)
+  const itemsCount = users.length
+  const totalPages = Math.ceil(itemsCount / params.maxPerPage)
   const startIndex = (params.currentPage - 1) * params.maxPerPage
   const endIndex = startIndex + params.maxPerPage
-  const data = users.slice(startIndex, endIndex)
+  const items = users.slice(startIndex, endIndex)
 
   return {
     ...params,
     totalPages,
-    data,
+    itemsCount,
+    items,
   }
 }
 
