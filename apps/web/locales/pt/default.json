@@ -15,7 +15,11 @@
   },
   "aside": {
     "states": {
-      "title": "Por Estado"
+      "title": "Por Estado",
+      "seeAll": {
+        "open": "Ver todos",
+        "close": "Recolher"
+      }
     }
   },
   "main": {
@@ -32,9 +36,18 @@
       "plural": "itens",
       "order": {
         "label": "Ordenar por:",
+        "placeholder": "Selecione",
         "first": "Nome",
         "last": "Sobrenome",
         "date": "Data"
+      }
+    },
+    "user": {
+      "email": "E-mail",
+      "gender": "Gênero",
+      "registered": {
+        "label": "Data de registro",
+        "info": ", {{years}} anos atrás"
       }
     }
   },
