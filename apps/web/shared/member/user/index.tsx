@@ -4,6 +4,7 @@ import { Card } from "@jsm/ui"
 import { format } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { tv } from "tailwind-variants"
+import { startCase } from "lodash"
 
 interface UserProps {
   user?: UserModel
@@ -37,9 +38,9 @@ export const User = ({ user, loading }: UserProps) => {
             alt={`${user?.name.first} image`}
           />
         )}
-        title={`${user?.name.first} ${user?.name.last}`}
-        address={`${user?.location.street}`}
-        country={`${user?.location.street}`}
+        title={startCase(`${user?.name.first} ${user?.name.last}`)}
+        address={startCase(`${user?.location.street}`)}
+        country={startCase(`${user?.location.street}`)}
         loading={loading}
       >
         <div className={infoClass}>
@@ -48,7 +49,7 @@ export const User = ({ user, loading }: UserProps) => {
         </div>
         <div className={infoClass}>
           <span className='font-medium'>{t("main.user.gender")}</span>{" "}
-          {user?.gender}
+          {startCase(user?.gender)}
         </div>
 
         {user && (

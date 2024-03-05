@@ -67,7 +67,7 @@ export const StatesForm = () => {
                   },
                 })}
               />
-              <label htmlFor={state + index}>{state}</label>
+              <label htmlFor={state + index} className="cursor-pointer">{state}</label>
             </div>
           ))}
         </Preloader>
