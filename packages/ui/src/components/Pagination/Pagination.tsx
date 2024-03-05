@@ -56,7 +56,6 @@ export const Pagination = (props: PaginationProps) => {
     activePage,
   }: PaginationItemRenderProps) => {
     if (PaginationItemType.PREV === value) {
-      console.log(total === 1, total)
       return (
         <button
           key={key}

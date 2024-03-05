@@ -13,6 +13,11 @@
       "system": "Sistema"
     }
   },
+  "aside": {
+    "states": {
+      "title": "Por Estado"
+    }
+  },
   "main": {
     "breadcrumbs": {
       "details": "Detalhes"
@@ -20,6 +25,17 @@
     "title": {
       "home": "Lista de membros",
       "detail": "Membro"
+    },
+    "filters": {
+      "showing": "Exibindo {{count}} de {{total}}",
+      "single": "item",
+      "plural": "itens",
+      "order": {
+        "label": "Ordenar por:",
+        "first": "Nome",
+        "last": "Sobrenome",
+        "date": "Data"
+      }
     }
   },
   "footer": {

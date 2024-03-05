@@ -9,7 +9,6 @@ export default async function handler(
   await NextCors(req, res, {
     // Options
     methods: ["GET"],
-    origin: "*",
     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
   })
 

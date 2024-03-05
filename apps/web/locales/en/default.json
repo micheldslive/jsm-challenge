@@ -13,6 +13,11 @@
       "system": "System"
     }
   },
+  "aside": {
+    "states": {
+      "title": "By State"
+    }
+  },
   "main": {
     "breadcrumbs": {
       "details": "Details"
@@ -20,6 +25,18 @@
     "title": {
       "home": "Members list",
       "detail": "Member"
+    },
+    "filters": {
+      "showing": "Showing {{count}} of {{total}}",
+      "single": "item",
+      "plural": "items",
+      "order": {
+        "label": "Order by:",
+        "first": "Name",
+        "last": "Lastname",
+        "date": "Date"
+      }
+
     }
   },
   "footer": {
