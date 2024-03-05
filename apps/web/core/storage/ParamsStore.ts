@@ -1,26 +1,24 @@
 /* eslint-disable no-unused-vars */
 import { createStore, useStore } from "zustand"
+import { ArrayParam, StringParam } from "use-query-params"
 
-type ParamsProps = number | string | string[]
-type PaginationProps = Record<string, ParamsProps>
-
+export type ParamsProps =
+  | number
+  | string
+  | string[]
+  | { [x: string]: string }[]
+  | (typeof ArrayParam)["default"]
 interface States {
-  search?: string
-  states?: string[]
-  order?: string
-  pagination?: PaginationProps
+  states?: ParamsProps
+  search?: (typeof StringParam)["default"]
+  order?: (typeof StringParam)["default"]
 }
 
 interface Actions {
-  setParams(params: States): void
+  setParams(params?: States): void
 }
 
-const createParamsStore = createStore<States & Actions>()((set) => ({
-  pagination: {
-    currentPage: 1,
-    maxPerPage: 9,
-    totalPages: 0,
-  },
+export const paramsStore = createStore<States & Actions>()((set) => ({
   search: "",
   states: [],
   order: "",
@@ -29,4 +27,4 @@ const createParamsStore = createStore<States & Actions>()((set) => ({
   },
 }))
 
-export const useParamsStore = () => useStore(createParamsStore)
+export const useParamsStore = () => useStore(paramsStore)
