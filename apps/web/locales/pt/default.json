@@ -1,6 +1,4 @@
 {
-  "greeting": "Hab einen schönen Tag!",
-  "page2": "Gehe zu Seite 2",
   "header": {
     "search": {
       "placeholder": "Busque aqui"
@@ -13,6 +11,15 @@
       "light": "Claro",
       "dark": "Escuro",
       "system": "Sistema"
+    }
+  },
+  "main": {
+    "breadcrumbs": {
+      "details": "Detalhes"
+    },
+    "title": {
+      "home": "Lista de membros",
+      "detail": "Membro"
     }
   },
   "footer": {
