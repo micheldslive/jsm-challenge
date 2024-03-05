@@ -36,14 +36,13 @@ export const Breadcrumbs = ({ homeElement, separator }: TBreadCrumbProps) => {
       {pathNames?.map((link, index) => {
         if (link === "") return null
 
-        let href = `/${pathNames.slice(0, index + 1).join("/")}`
         const details = detailsLng[link as never]
 
         return (
           <React.Fragment key={index.toString()}>
             <li>{separator}</li>
             <li>
-              <Link href={href}>{details ? t(details) : link}</Link>
+              <span>{details ? t(details) : link}</span>
             </li>
             {pathNames.length !== index + 1 && <li>{separator}</li>}
           </React.Fragment>

@@ -3,6 +3,7 @@ import { Footer } from "./footer"
 import { Header } from "./header"
 import { Home } from "./home"
 import { Main } from "./main"
+import { Member } from "./member"
 
 export const Shared = {
   Container,
@@ -10,4 +11,5 @@ export const Shared = {
   Main,
   Footer,
   Home,
+  Member,
 }

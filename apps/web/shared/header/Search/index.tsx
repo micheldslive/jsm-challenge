@@ -4,7 +4,7 @@ import { Search } from "@jsm/ui"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { useQueryParam, withDefault, StringParam } from "use-query-params"
-import { useParamsStore } from "../../../core/storage"
+import { useParamsStore } from "~/core/storage"
 
 interface SearchFormProps {
   search: string

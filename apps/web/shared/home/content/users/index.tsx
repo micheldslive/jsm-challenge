@@ -5,6 +5,8 @@ import Image from "next/image"
 import { usePaginateParamsStore, useParamsStore } from "~/core/storage"
 import { useEffect, useState } from "react"
 import { Preload } from "./components/Preload"
+import Link from "next/link"
+import { startCase } from "lodash"
 
 export const Users = () => {
   const { getQueryUsers } = useJSMContext()
@@ -32,25 +34,32 @@ export const Users = () => {
 
   return (
     <>
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid rsm:!grid-cols-1 rmd:grid-cols-2 grid-cols-3 gap-4'>
         <Preload loading={isLoading}>
-          {data?.items?.map((item, index) => (
-            <Card
-              key={item?.name.first + index}
-              image={() => (
-                <Image
-                  src={item?.picture.medium}
-                  alt={`${item?.name.first} ${item?.name.last}`}
-                  width={80}
-                  height={80}
+          {data?.items?.map((item, index) => {
+            const fullName = startCase(
+              `${item?.name.first} ${item?.name.last}`,
+            )
+            return (
+              <Link href={`/details?name=${fullName}`}>
+                <Card
+                  key={item?.name.first + index}
+                  image={() => (
+                    <Image
+                      src={item?.picture.medium}
+                      alt={fullName}
+                      width={80}
+                      height={80}
+                    />
+                  )}
+                  title={fullName}
+                  address={startCase(`${item?.location.street}`)}
+                  country={startCase(`${item?.location.city} ${item?.location.state} CEP-${item?.location.postcode}`)}
+                  loading={isLoading}
                 />
-              )}
-              title={`${item?.name.first} ${item?.name.last}`}
-              address={`${item?.location.street}`}
-              country={`${item?.location.street}`}
-              loading={isLoading}
-            />
-          ))}
+              </Link>
+            )
+          })}
         </Preload>
       </div>
       <div className='w-full flex justify-center py-4'>
