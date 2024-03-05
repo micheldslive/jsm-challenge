@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from "axios"
 
 export const HTTPClient = async <T>(configs: AxiosRequestConfig) => {
-  const baseURL = "http://localhost:3000"
+  const baseURL = process.env.JSM_API_BASE_PATH ?? "http://localhost:3000"
 
   if (!baseURL) {
     throw new Error("baseURL not found")

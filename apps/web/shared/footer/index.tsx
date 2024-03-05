@@ -10,7 +10,7 @@ export const Footer = () => {
   const { t } = useTranslation()
   return (
     <footer className='bg-neutral-750 mt-8'>
-      <Container className='lg:container py-10 flex flex-col items-center gap-5 justify-center'>
+      <Container className='py-10 flex flex-col items-center gap-5 justify-center'>
         <JSMLogo />
         <h4 className='text-white text-base font-medium'>
           {t("footer.company.name")}
