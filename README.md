@@ -62,15 +62,13 @@ Then move to the project directory
 cd jsm-challenge
 ```
 
-Install the project dependencies:
+Install the project dependencies, in the root `./` of the turborepo, make sure you have node 20.11 version:
 
 ```bash
 pnpm i
-# or
-yarn
 ```
 
-Run the main web application locally and open up [local host](http://localhost:3000)
+Create a `.env` file in `/apps/web` and copy the contents of .env.example and run the main web application locally and open up [local host](http://localhost:3000)
 
 ```bash
 pnpm dev
