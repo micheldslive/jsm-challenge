@@ -8,9 +8,7 @@ import { User } from "./user"
 export const Member = () => {
   const { getUserByName } = useJSMContext()
   const [name] = useQueryParam("name", withDefault(StringParam, ""))
-  const { data, isLoading } = getUserByName({ name })
-
-  const user = data?.length ? data[0] : undefined
+  const { data: user, isLoading } = getUserByName({ name })
 
   return (
     <Container className='pb-6 pt-4 flex items-center justify-center'>

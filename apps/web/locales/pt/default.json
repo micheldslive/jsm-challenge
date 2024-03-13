@@ -48,7 +48,8 @@
       "registered": {
         "label": "Data de registro:",
         "info": ", {{years}} anos atrás"
-      }
+      },
+      "not-found": "Nenhum resultado foi encontrado"
     }
   },
   "footer": {

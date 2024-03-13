@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { Preload } from "./components/Preload"
 import Link from "next/link"
 import { startCase } from "lodash"
+import { ItemNotFound } from "~/shared/not-found"
 
 export const Users = () => {
   const { getQueryUsers } = useJSMContext()
@@ -63,6 +64,9 @@ export const Users = () => {
           })}
         </Preload>
       </div>
+      {Boolean(data?.items?.length === 0) && (
+        <ItemNotFound className='w-full max-w-full' />
+      )}
       <div className='w-full flex justify-center py-4'>
         <Pagination
           total={totalPages}

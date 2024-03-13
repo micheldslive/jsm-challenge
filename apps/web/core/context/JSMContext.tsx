@@ -14,7 +14,7 @@ export interface HandleQueryProps {
 type GetProps<T, R> = (props: Record<string, T>) => UseQueryResult<R, Error>
 
 type GetQueryUsersProps = GetProps<ParamsProps, PaginateModel>
-type GetUserProps = GetProps<string, UsersModel>
+type GetUserProps = GetProps<string, UserModel>
 type GetStatesProps = GetProps<
   string,
   {
