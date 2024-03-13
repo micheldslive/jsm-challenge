@@ -5,6 +5,7 @@ import { format } from "date-fns"
 import { useTranslation } from "react-i18next"
 import { tv } from "tailwind-variants"
 import { startCase } from "lodash"
+import { ItemNotFound } from "~/shared/not-found"
 
 interface UserProps {
   user?: UserModel
@@ -20,11 +21,7 @@ export const User = ({ user, loading }: UserProps) => {
   const infoClass = "pt-5 text-sm font-normal"
 
   if (!user?.name && !loading) {
-    return (
-      <div className={baseTV({ className: "text-center" })}>
-        "Usuário não encontrado"
-      </div>
-    )
+    return <ItemNotFound />
   }
 
   return (
@@ -40,7 +37,9 @@ export const User = ({ user, loading }: UserProps) => {
         )}
         title={startCase(`${user?.name.first} ${user?.name.last}`)}
         address={startCase(`${user?.location.street}`)}
-        country={startCase(`${user?.location.street}`)}
+        country={startCase(
+          `${user?.location.city} ${user?.location.state} CEP-${user?.location.postcode}`,
+        )}
         loading={loading}
       >
         <div className={infoClass}>
