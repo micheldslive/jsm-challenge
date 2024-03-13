@@ -98,9 +98,12 @@ export class UsersRepository implements UsersModelProps {
         })
       }
 
-      const user = matchSorter(allUsers, String(name ?? ""), {
+      const userFilter = matchSorter(allUsers, String(name ?? ""), {
         keys: [(item) => `${item.name.first} ${item.name.last}`],
+        threshold: matchSorter.rankings.EQUAL,
       })
+
+      const user = Object.assign({}, ...userFilter)
 
       return HTTPResponse.ok(res, user)
     } catch {
